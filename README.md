@@ -29,16 +29,22 @@ Instructions:
 2. Sign-In: `await FirebaseAuth.instance.signInWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
 3. Create: `await FirebaseAuth.instance.createUserWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
 
+![](https://i.imgur.com/KaB9HtH.png)
+auth_card.dart \
+
 ### Example (2) Snackbar
 
 See lib/widget_examples/snackbar/ \
 Method examples: lib/widget_examples/snackbar/snackbar_util.dart \
 Raw Example:
 
-```
+```dart
 ScaffoldMessenger.of(context).hideCurrentSnackBar();
 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 ```
+
+![](https://imgur.com/Ky7hnzu)
+snackbar_util.dart
 
 ### Example (3) Drawer
 
@@ -46,11 +52,14 @@ See lib/widget_examples/drawer/ \
 Template: lib/widget_examples/drawer/drawer.dart \
 Raw Example:
 
-```
+```dart
 Scaffold(
     drawer: Drawer(...) // see template: lib/widget_examples/drawer/drawer.dart
 )
 ```
+
+![](https://i.imgur.com/1dwMjxE.png)
+drawer.dart
 
 ### Example (4) Bottom Navigation Bar
 
@@ -58,7 +67,7 @@ See lib/widget_examples/bottom_navigation_bar/ \
 Tabs Screen template: lib/widget_examples/bottom_navigation_bar/tabs_screen.dart \
 Raw Example:
 
-```
+```dart
 Scaffold(
     bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex, // 0 <= x <= items.length;
@@ -71,3 +80,6 @@ Scaffold(
     )
 )
 ```
+
+![](https://imgur.com/usXxrj7)
+tab_screen.dart

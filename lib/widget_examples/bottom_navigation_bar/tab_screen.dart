@@ -8,12 +8,7 @@ class TabScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Row(
-        children: [
-          Text('This is Tab #${number}'),
-        ],
-      )),
+      body: Center(child: Text('This is Tab #${number}')),
     );
   }
 }
