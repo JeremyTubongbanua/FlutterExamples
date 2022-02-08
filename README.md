@@ -83,3 +83,128 @@ Scaffold(
 
 ![](https://i.imgur.com/usXxrj7.png) \
 tab_screen.dart
+
+### Example (5) Cloud Firestore
+
+See lib/firebase_examples/firebase_cloud_firestore/ \
+
+Dependencies:
+
+1. Configure FlutterFire (See FlutterFire Setup)
+2. `flutter pub add firebase_core`
+3. `flutter pub add cloud_Firestore`
+
+Tips:
+
+-   Access instance through `FirebaseFirestore.instance`
+-   Collections hold documents
+-   Documents hold field-value pairs and hold collections
+-   https://firebase.flutter.dev/docs/firestore/usage#document--query-snapshots (TODO)
+
+Instructions:
+
+1. Initialize Firebase`Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);`
+2. Set (removes other data in the document):
+
+```dart
+final Map<String, dynamic> data = {'field': 'value'};
+await FirebaseFirestore.instance
+    .collection('collectionId')
+    .doc('documentId')
+    .set(data);
+```
+
+3. Update (does not remove other data in the document):
+
+```dart
+final Map<String, dynamic> data = {'field': 'value', 'lemon': 5};
+await FirebaseFirestore.instance
+    .collection('collectionId')
+    .doc('documentId')
+    .update(data);
+```
+
+4. Get:
+
+```dart
+final documentSnapshot = await FirebaseFirestore.instance.collection('users').doc('user1').get();
+print(documentSnapshot.data()); // {lemon: 5, test: 3}
+```
+
+5. Add:
+
+-   creates collection (if necessary)
+-   creates document with auto-id
+
+```dart
+await FirebaseFirestore.instance.collection('poopy').add({'test': 3})
+```
+
+6. StreamBuilder + Snapshots:
+   Sample: users (collection) > x23mark (document) >
+
+```dart
+StreamBuilder(
+    stream: FirebaseFirestore.instance.collection('users').snapshots(),
+    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      if (snapshot.hasError) {
+        return const Text('Snapshot has error?');
+      }
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+
+      return ListView(
+        children: snapshot.data!.docs
+            .map((DocumentSnapshot document) => ListTile(
+                  title: Text(document.data().toString()),
+                ))
+            .toList(),
+      );
+    },
+),
+```
+
+7. FutureBuilder (TODO)
+   https://firebase.flutter.dev/docs/firestore/usage#one-time-read
+
+8. Checking if a document exists:
+
+```dart
+final CollectionReference collection = await FirebaseFirestore.instance.collection('users'); // get collection reference
+final DocumentReference document = collection.doc('x23mark'); // get document reference
+final DocumentSnapshot snapshot = await document.get(); // get snapshot
+final bool hasData = snapshot.data() != null; // hasData ?
+```
+
+9. Getting document data:
+
+```dart
+final CollectionReference collection = await FirebaseFirestore.instance.collection('users'); // get collection reference
+final DocumentReference document = collection.doc('x23mark'); // get document reference
+final DocumentSnapshot snapshot = await document.get(); // get document snapshot
+final Object? data = snapshot.data()?; // get nullable Object
+print(data); // {nickname: jeremy}
+```
+
+10. Steps 8 and 10 together
+
+```dart
+final CollectionReference collection = await FirebaseFirestore.instance.collection(collectionIdcontroller.text);
+final DocumentReference document = collection.doc(documentIdController.text);
+final DocumentSnapshot snapshot = await document.get();
+final bool hasData = snapshot.data() != null;
+if (hasData) {
+  document.update({fieldController.text: valueController.text});
+} else {
+  document.set({fieldController.text: valueController.text});
+}
+```
+
+![](https://i.imgur.com/okzutea.png)
+main_screen.dart
+
+11. Converters (TODO)
+    https://firebase.flutter.dev/docs/firestore/usage#typing-collectionreference-and-documentreference
+
+12. Removing Data (TODO)
+    https://firebase.flutter.dev/docs/firestore/usage#typing-collectionreference-and-documentreference
