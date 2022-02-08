@@ -14,4 +14,60 @@ FlutterFire is a set of Flutter plugins which connect your Flutter application t
 6. Get firebase_core `flutter pub add firebase_core` (needed dependency in `firebase_options.dart`) (You should have `generated_plugin_registrant.dart` as well) Step (2)
 7. Call `Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);` before starting the app <<< Step (3)
 
-### Cloud Firestore
+### Example (1) Firebase Auth
+
+See lib/firebase_examples/firebase_auth/ \
+Dependencies:
+
+1. Configure FlutterFire (See FlutterFire Setup)
+2. `flutter pub add firebase_core`
+3. `flutter pub add firebase_auth`
+
+Instructions:
+
+1. Initialize Firebase before you runApp(): `Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);`
+2. Sign-In: `await FirebaseAuth.instance.signInWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
+3. Create: `await FirebaseAuth.instance.createUserWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
+
+### Example (2) Snackbar
+
+See lib/widget_examples/snackbar/ \
+Method examples: lib/widget_examples/snackbar/snackbar_util.dart \
+Raw Example:
+
+```
+ScaffoldMessenger.of(context).hideCurrentSnackBar();
+ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+```
+
+### Example (3) Drawer
+
+See lib/widget_examples/drawer/ \
+Template: lib/widget_examples/drawer/drawer.dart \
+Raw Example:
+
+```
+Scaffold(
+    drawer: Drawer(...) // see template: lib/widget_examples/drawer/drawer.dart
+)
+```
+
+### Example (4) Bottom Navigation Bar
+
+See lib/widget_examples/bottom_navigation_bar/ \
+Tabs Screen template: lib/widget_examples/bottom_navigation_bar/tabs_screen.dart \
+Raw Example:
+
+```
+Scaffold(
+    bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex, // 0 <= x <= items.length;
+        items: [/* ... Insert Widgets ...*/],
+        onTap: () {
+            setState((index) {
+                _currentIndex = index;
+            });
+        }
+    )
+)
+```
