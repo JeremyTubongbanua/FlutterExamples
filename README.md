@@ -29,8 +29,8 @@ Instructions:
 2. Sign-In: `await FirebaseAuth.instance.signInWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
 3. Create: `await FirebaseAuth.instance.createUserWithEmailAndPassword(email: 'jeremy.tubongbanua@gmail.com', password: 'lemon1234');`
 
-![](https://i.imgur.com/KaB9HtH.png)
-auth_card.dart \
+![](https://i.imgur.com/KaB9HtH.png) \
+auth_card.dart
 
 ### Example (2) Snackbar
 
@@ -43,7 +43,7 @@ ScaffoldMessenger.of(context).hideCurrentSnackBar();
 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 ```
 
-![](https://i.imgur.com/Ky7hnzu.png)
+![](https://i.imgur.com/Ky7hnzu.png) \
 snackbar_util.dart
 
 ### Example (3) Drawer
@@ -58,7 +58,7 @@ Scaffold(
 )
 ```
 
-![](https://i.imgur.com/1dwMjxE.png)
+![](https://i.imgur.com/1dwMjxE.png) \
 drawer.dart
 
 ### Example (4) Bottom Navigation Bar
@@ -81,5 +81,5 @@ Scaffold(
 )
 ```
 
-![](https://i.imgur.com/usXxrj7.png)
+![](https://i.imgur.com/usXxrj7.png) \
 tab_screen.dart
