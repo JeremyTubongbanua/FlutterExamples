@@ -43,7 +43,7 @@ ScaffoldMessenger.of(context).hideCurrentSnackBar();
 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 ```
 
-![](https://imgur.com/Ky7hnzu)
+![](https://i.imgur.com/Ky7hnzu.png)
 snackbar_util.dart
 
 ### Example (3) Drawer
@@ -81,5 +81,5 @@ Scaffold(
 )
 ```
 
-![](https://imgur.com/usXxrj7)
+![](https://i.imgur.com/usXxrj7.png)
 tab_screen.dart
