@@ -1,0 +1,2 @@
+Needs http package
+flutter pub add firebase_auth
