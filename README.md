@@ -277,3 +277,28 @@ final ChangeNotifierProvider<CountProvider> provider = ChagneNotifierProvider<Co
 4. Call `runApp(providers)` (or `runApp(provider) for 3b).
 
 5. Use `ChangeNotifierProvider.value(...)` for Provider classes that are instantiated frequently.
+
+### Example (7) Fonts
+
+See `lib/other_examples/fonts/`
+
+Instructions:
+
+1. Add font files to project. See `lib/other_examples/fonts/assets/` for font file examples.
+2. Register fonts into `pubspec.yaml` accordingly. (\*font weight is findable via the place you downloaded the font).
+
+```yaml
+fonts:
+    - family: Quicksand
+      fonts:
+          - asset: assets/fonts/Quicksand-Light.ttf
+            weight: 300
+          - asset: assets/fonts/Quicksand-Regular.ttf
+            weight: 400
+          - asset: assets/fonts/Quicksand-Medium.ttf
+            weight: 500
+          - asset: assets/fonts/Quicksand-Semibold.ttf
+            weight: 600
+          - asset: assets/fonts/Quicksand-Bold.ttf
+            weight: 700
+```
