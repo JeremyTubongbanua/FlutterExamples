@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_examples/firebase_examples/firebase_auth/firebase_options.dart';
 import 'package:flutter_examples/main_screen.dart';
 
-void main() {
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+void main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final MaterialApp app = MaterialApp(
     routes: {MainScreen.routeName: (ctx) => const MainScreen()},

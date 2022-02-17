@@ -200,7 +200,7 @@ if (hasData) {
 }
 ```
 
-![](https://i.imgur.com/okzutea.png)
+![](https://i.imgur.com/okzutea.png) \
 main_screen.dart
 
 11. Converters (TODO)
