@@ -208,3 +208,72 @@ main_screen.dart
 
 12. Removing Data (TODO)
     https://firebase.flutter.dev/docs/firestore/usage#typing-collectionreference-and-documentreference
+
+### Example (6) MultiProviders
+
+See lib/other_examples/multi_provider/ \
+
+Dependencies:
+
+1. `$ flutter pub add provider`
+
+Tips:
+
+-   Providers are good for app-wide data
+-   Provider flutter package makes life easy
+
+Instructions:
+
+1. Create a class that uses the `ChangeNotifier` mixin. (Use keyword `with` but `extends` works as well to get access to notifyListeners()). \
+   Example:
+
+```dart
+import 'package:flutter/material.dart';
+
+class CountProvider with ChangeNotifier {
+ late int _currentCount;
+
+ CountProvider() {
+   _currentCount = 0;
+ }
+
+ void increment() {
+   _currentCount += 1;
+   notifyListeners();
+ }
+
+ void decrement() {
+   _currentCount -= 1;
+   notifyListeners();
+ }
+
+ int get currentCount {
+   return _currentCount;
+ }
+}
+
+```
+
+2. Initialize Provider
+
+```dart
+final ChangeNotifierProvider<CountProvider> provider = ChagneNotifierProvider<CountProvider>(create: (context) => CountProvider());
+```
+
+3. a) Shove it into the MultiProvider \
+   `app` is a MaterialApp.
+
+```dart
+final MultiProvider providers = MultiProvider(providers: [provider], child: app);
+```
+
+3. b) Use a singular provider \
+   `app` is a MaterialApp.
+
+```dart
+final ChangeNotifierProvider<CountProvider> provider = ChagneNotifierProvider<CountProvider>(create: (context) => CountProvider(), child: app);
+```
+
+4. Call `runApp(providers)` (or `runApp(provider) for 3b).
+
+5. Use `ChangeNotifierProvider.value(...)` for Provider classes that are instantiated frequently.
